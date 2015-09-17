@@ -25,22 +25,13 @@ var streamingUrl="http://unoredcdn.net/radiocdm/myStream.sdp/playlist.m3u8";
 <script src="js/jquery.mobile-1.4.5.min.js" type="text/javascript"></script>
 </head>
 <body>
-<div data-role="page" id="home">
+<div data-role="page"  id="home">
 	<div data-role="header" data-position="fixed" data-tap-toggle="false" id="myheader" align="center">
-		<a class="back-btn" href="#menu" onClick="tvOff()" data-direction="reverse" data-role="none"><img src="images/back-btn.png"/></a>
-		<h3>CDM TV</h3>
-	</div>	
-	<div data-role="content" >
-		<iframe id="cdmvideo" src="http://unoredcdn.com/iframe/plans-noauto.php?s=myStream.sdp&amp;c=cadenadelmilagro" width="100%" height="250" frameborder="0" scrolling="no" align="center" allowtransparency="true"></iframe>
+		<img style="height:60px;margin-top:-8px" src="images/logo.png"/>
 	</div>
-</div>
-<div data-role="page"  id="menu">
-	<div data-role="header" data-position="fixed" data-tap-toggle="false" id="myheader" align="center">
-		<img src="images/logo.png"/>
-	</div>
-	<div id="content" >
+	<div id="content" class="content" >
 		 <ul id="menu-list">
-			<li><a href="#home"><img src="images/video.png"/>Televisión</a></li>
+			<li><a href="#tv"><img src="images/video.png"/>Televisión</a></li>
 			<li><a href="#radio"><img src="images/audio.png"/>Radio</a></li>
 			<li><a href="#" class="call"><img src="images/call_2.png"/>Llamar</a></li>
 			<li><a href="#" class="contact"><img src="images/email.png"/>Email</a></li>
@@ -48,7 +39,7 @@ var streamingUrl="http://unoredcdn.net/radiocdm/myStream.sdp/playlist.m3u8";
 			<li><a href="#" onclick="window.open('http://www.cdminternacional.com','_blank','location=no,closebuttoncaption=Atrás');"><img src="images/web.png"/>Sitio Web</a></li>
 			<li><a href="#donation"><img src="images/donation.png"/>Donar</a></li>
 			<li><a href="#notification"><img src="images/notification.png"/>Notificaciones</a></li>
-			<li><a href="#" onclick="window.open('https://www.facebook.com/cdminternacionaltv','_blank','location=no,closebuttoncaption=Atrás');"><img src="images/facebook.png"/>Facebook</a></li>
+			<li><a href="#" onclick="window.open('https://m.facebook.com/cdminternacionaltv','_blank','location=no,closebuttoncaption=Atrás');"><img src="images/facebook.png"/>Facebook</a></li>
 			<li><a href="#" onclick= "window.open('https://www.youtube.com/user/cdminternacional','_blank','location=no,closebuttoncaption=Atrás');"><img src="images/youtube.png"/>YouTube</a></li>
 		</ul>
 	</div>
@@ -67,9 +58,32 @@ var streamingUrl="http://unoredcdn.net/radiocdm/myStream.sdp/playlist.m3u8";
 			</div>
 		</div>
 </div>
+<div data-role="page" id="tv">
+	<div data-role="header" data-position="fixed" data-tap-toggle="false" id="myheader" align="center">
+		<a class="back-btn" href="#home" onClick="tvOff()" data-direction="reverse" data-role="none"><img src="images/back-btn.png"/></a>
+		<h3>CDM TV</h3>
+	</div>	
+	<div data-role="content" >
+		<iframe id="cdmvideo" src="http://unoredcdn.com/iframe/plans-noauto.php?s=myStream.sdp&=cadenadelmilagro" width="100%" height="250" frameborder="0" scrolling="no" align="center" allowtransparency="true"></iframe>
+	</div>
+	<div id="ads">
+			<div id="imgslide">
+				<script type="text/javascript"> 
+					var output="";
+					$.getJSON("http://www.rockapr.com/site/slideshowjson.php",function(adsdata){ 
+						for(adsi in adsdata){
+						output+='<a href="#" class="rotating-item" onclick="window.open(\''+adsdata[adsi].banner_link+'\');"><img src="'+adsdata[adsi].banner_img+'" alt="'+adsdata[adsi].banner_title+'"  title="'+adsdata[adsi].banner_title+'"></a>';	
+						}			
+						$('#rotating-item-wrapper').append(output);	
+					});
+				</script>
+				<div id="rotating-item-wrapper"></div>
+			</div>
+		</div>
+</div>
 <div data-role="page" id="radio">
 	<div data-role="header" data-position="fixed" data-tap-toggle="false" id="myheader" align="center">
-		<a class="back-btn" href="#menu" data-direction="reverse" data-role="none"><img src="images/back-btn.png"/></a>
+		<a class="back-btn" href="#home" data-direction="reverse" data-role="none"><img src="images/back-btn.png"/></a>
 		<h3>CDM Radio</h3>
 	</div>	
 	<div data-role="content" >
@@ -81,10 +95,24 @@ var streamingUrl="http://unoredcdn.net/radiocdm/myStream.sdp/playlist.m3u8";
 			</ul>
 		</div>
 	</div>
+	<div id="ads">
+			<div id="imgslide">
+				<script type="text/javascript"> 
+					var output="";
+					$.getJSON("http://www.rockapr.com/site/slideshowjson.php",function(adsdata){ 
+						for(adsi in adsdata){
+						output+='<a href="#" class="rotating-item" onclick="window.open(\''+adsdata[adsi].banner_link+'\');"><img src="'+adsdata[adsi].banner_img+'" alt="'+adsdata[adsi].banner_title+'"  title="'+adsdata[adsi].banner_title+'"></a>';	
+						}			
+						$('#rotating-item-wrapper').append(output);	
+					});
+				</script>
+				<div id="rotating-item-wrapper"></div>
+			</div>
+		</div>
 </div>
 <div data-role="page" id="donation">
 	<div data-role="header" data-position="fixed" data-tap-toggle="false" id="myheader" align="center">
-		<a class="back-btn" href="#menu" data-direction="reverse" data-role="none"><img src="images/back-btn.png"/></a>
+		<a class="back-btn" href="#home" data-direction="reverse" data-role="none"><img src="images/back-btn.png"/></a>
 		<h3>Donaciones</h3>
 	</div>	
 	<div data-role="content" >
@@ -156,9 +184,6 @@ var streamingUrl="http://unoredcdn.net/radiocdm/myStream.sdp/playlist.m3u8";
 		</form>
 	</div>
 </div>
-
-
-
 <script type="text/javascript" charset="utf-8">
 $('.call').on("click",function(){
 		window.location.href = "tel:7872625400";

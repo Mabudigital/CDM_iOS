@@ -31,8 +31,8 @@ var streamingUrl="http://unoredcdn.net/radiocdm/myStream.sdp/playlist.m3u8";
 	</div>
 	<div id="content" class="content" >
 		 <ul id="menu-list">
-			<li><a href="#tv" ><img src="images/video.png"/>Televisión</a></li>
-			<li><a href="#radio" ><img src="images/audio.png"/>Radio</a></li>
+			<li><a href="#tv" onclick="tvOn()"><img src="images/video.png"/>Televisión</a></li>
+			<li><a href="#radio" onclick="tvOff()"><img src="images/audio.png"/>Radio</a></li>
 			<li><a href="#" class="call"><img src="images/call_2.png"/>Llamar</a></li>
 			<li><a href="#" class="contact"><img src="images/email.png"/>Email</a></li>
 			<li><a href="#schedule"><img src="images/schedule.png"/>Programación</a></li>
@@ -60,7 +60,7 @@ var streamingUrl="http://unoredcdn.net/radiocdm/myStream.sdp/playlist.m3u8";
 </div>
 <div data-role="page" id="tv">
 	<div data-role="header" data-position="fixed" data-tap-toggle="false" id="myheader" align="center">
-		<a class="back-btn" onclick="tvOff()" href="#home" data-direction="reverse" data-role="none"><img src="images/back-btn.png"/></a>
+		<a class="back-btn"  href="#home" data-direction="reverse" data-role="none"><img src="images/back-btn.png"/></a>
 		<h3>CDM TV</h3>
 	</div>	
 	<div data-role="content" >
@@ -83,7 +83,7 @@ var streamingUrl="http://unoredcdn.net/radiocdm/myStream.sdp/playlist.m3u8";
 </div>
 <div data-role="page" id="radio">
 	<div data-role="header" data-position="fixed" data-tap-toggle="false" id="myheader" align="center">
-		<a class="back-btn" onclick="tvOn()" href="#home" data-direction="reverse" data-role="none"><img src="images/back-btn.png"/></a>
+		<a class="back-btn"  href="#home" data-direction="reverse" data-role="none"><img src="images/back-btn.png"/></a>
 		<h3>CDM Radio</h3>
 	</div>	
 	<div data-role="content" class="content">

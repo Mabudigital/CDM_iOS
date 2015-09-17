@@ -10,6 +10,7 @@
 <link href="js/jquery.mobile-1.4.5.min.css" rel="stylesheet" type="text/css" />
 <script src="js/jquery-1.11.1.min.js" type="text/javascript"></script>
 <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
+<script type="text/javascript" charset="utf-8" src="js/html5audio.js"></script>
 <script type='text/javascript' src='js/infinite-rotator.js'></script>
 <script src="js/connectionstatus.js" type="text/javascript"></script>
 <script type="text/javascript">
@@ -30,8 +31,8 @@ var streamingUrl="http://unoredcdn.net/radiocdm/myStream.sdp/playlist.m3u8";
 	</div>
 	<div id="content" class="content" >
 		 <ul id="menu-list">
-			<li><a href="#tv"><img src="images/video.png"/>Televisión</a></li>
-			<li><a href="#radio"><img src="images/audio.png"/>Radio</a></li>
+			<li><a href="#tv" ><img src="images/video.png"/>Televisión</a></li>
+			<li><a href="#radio" ><img src="images/audio.png"/>Radio</a></li>
 			<li><a href="#" class="call"><img src="images/call_2.png"/>Llamar</a></li>
 			<li><a href="#" class="contact"><img src="images/email.png"/>Email</a></li>
 			<li><a href="#schedule"><img src="images/schedule.png"/>Programación</a></li>
@@ -55,41 +56,41 @@ var streamingUrl="http://unoredcdn.net/radiocdm/myStream.sdp/playlist.m3u8";
 				</script>
 				<div id="rotating-item-wrapper"></div>
 			</div>
-		</div>
+	</div>
 </div>
 <div data-role="page" id="tv">
 	<div data-role="header" data-position="fixed" data-tap-toggle="false" id="myheader" align="center">
-		<a class="back-btn" href="#home" onClick="tvOff()" data-direction="reverse" data-role="none"><img src="images/back-btn.png"/></a>
+		<a class="back-btn" onclick="tvOff()" href="#home" data-direction="reverse" data-role="none"><img src="images/back-btn.png"/></a>
 		<h3>CDM TV</h3>
 	</div>	
 	<div data-role="content" >
-		<iframe id="cdmvideo" src="http://unoredcdn.com/iframe/plans-noauto.php?s=myStream.sdp&=cadenadelmilagro" width="100%" height="250" frameborder="0" scrolling="no" align="center" allowtransparency="true"></iframe>
+		<iframe id="cdmvideo" src="http://unoredcdn.com/iframe/plans-noauto.php?s=myStream.sdp&c=cadenadelmilagro" width="100%" height="250" frameborder="0" scrolling="no" align="center"></iframe>
 	</div>
 	<div id="ads">
-			<div id="imgslide">
-				<script type="text/javascript"> 
-					var output="";
-					$.getJSON("http://www.rockapr.com/site/slideshowjson.php",function(adsdata){ 
-						for(adsi in adsdata){
-						output+='<a href="#" class="rotating-item" onclick="window.open(\''+adsdata[adsi].banner_link+'\');"><img src="'+adsdata[adsi].banner_img+'" alt="'+adsdata[adsi].banner_title+'"  title="'+adsdata[adsi].banner_title+'"></a>';	
-						}			
-						$('#rotating-item-wrapper').append(output);	
-					});
-				</script>
-				<div id="rotating-item-wrapper"></div>
-			</div>
+		<div id="imgslide">
+			<script type="text/javascript"> 
+				var output="";
+				$.getJSON("http://www.rockapr.com/site/slideshowjson.php",function(adsdata){ 
+					for(adsi in adsdata){
+					output+='<a href="#" class="rotating-item" onclick="window.open(\''+adsdata[adsi].banner_link+'\');"><img src="'+adsdata[adsi].banner_img+'" alt="'+adsdata[adsi].banner_title+'"  title="'+adsdata[adsi].banner_title+'"></a>';	
+					}			
+					$('#rotating-item-wrapper').append(output);	
+				});
+			</script>
+			<div id="rotating-item-wrapper"></div>
 		</div>
+	</div>
 </div>
 <div data-role="page" id="radio">
 	<div data-role="header" data-position="fixed" data-tap-toggle="false" id="myheader" align="center">
-		<a class="back-btn" href="#home" data-direction="reverse" data-role="none"><img src="images/back-btn.png"/></a>
+		<a class="back-btn" onclick="tvOn()" href="#home" data-direction="reverse" data-role="none"><img src="images/back-btn.png"/></a>
 		<h3>CDM Radio</h3>
 	</div>	
-	<div data-role="content" >
+	<div data-role="content" class="content">
 		<img  src="images/logo_radio.jpg"/>
 		<div data-role="navbar">
 			<ul>
-				<li><a id="playbutton" href="#" onclick="playAudio()"><img id="play" class = "play-btn" src="images/play.png"/></a></li>
+				<li><a id="playbutton" href="#" onClick="html5audio.play();return false;"><img src="images/play.png"/></a><a href="#" id="activityindicator" onClick="html5audio.stop();return false;"><img src="images/activityindicator.gif" /></a><a id="stopbutton" href="#" class="stopaudio" onClick="html5audio.stop();return false;"><img  src="images/stop.png"/></a></li>
 				<li><a href="#"><img class="call-btn call" src="images/call.png"/></a></li>
 			</ul>
 		</div>
@@ -191,14 +192,14 @@ $('.contact').on("click",function(){
 	window.location.href = "mailto:";
 });
 document.addEventListener("deviceready", onDeviceReady, false);
-var myMedia = null;
-var playing = false;
-function onDeviceReady(){
-	updateMedia();
-	playAudio();
-	gaPlugin = window.plugins.gaPlugin;
-	gaPlugin.init(successHandler, errorHandler, "UA-38947668-5", 10);
-}
+	function onDeviceReady() {
+		//html5audio.play();
+		navigator.splashscreen.hide();
+		StatusBar.show();
+		StatusBar.overlaysWebView(false);
+		StatusBar.styleLightContent();
+		StatusBar.backgroundColorByHexString("#334363");
+	}
 //notifications
 document.addEventListener('deviceready', function () {
 	var notificationOpenedCallback = function(jsonData) {
@@ -209,98 +210,26 @@ document.addEventListener('deviceready', function () {
 		navigator.notification.alert(jsonData.message, alertDismissed,'CDM Internacional', 'Ok')
 	};
 	window.plugins.OneSignal.init("11c9d7f8-5c2f-11e5-b9c6-af0691857d6f",
-					   {googleProjectNumber: "750840400177"},
-					   notificationOpenedCallback);
-	window.plugins.OneSignal.enableNotificationsWhenActive(false);
-	window.plugins.OneSignal.enableSound(true);
-	window.plugins.OneSignal.enableVibrate(false);
+					   {autoRegister: true},
+						   notificationOpenedCallback);
+			window.plugins.OneSignal.enableInAppAlertNotification(true);
 },false); 
-function updateMedia() {
-	myMedia = new Media('http://unoredcdn.net/radiocdm/myStream.sdp/playlist.m3u8', stopAudio, null);
-}
-function playAudio() {
-	if (!playing) {
-		myMedia.play();
-		document.getElementById('play').src = "images/activityindicator.gif"; 
-		progressTimer = setInterval(function() {
-			myMedia.getCurrentPosition(
-				function(position) {
-					if (position > 0) {
-						document.getElementById('play').src = "images/stop.png";
-						playing = true;
-					}
-				},
-				// error callback
-				function(e) {
-				//console.log("Error getting pos " + e);
-				}
-			);
-		}, 1000);
-	} else {
-		myMedia.stop();
-		myMedia.release();
-		document.getElementById('play').src = "images/play.png";    
-		playing = false; 
-	}
-}
-function stopAudio() {
-	myMedia.stop();
-	myMedia.release();
-	playing = false;
-	document.getElementById('play').src = "images/play.png";     
-}
-var video;
+
 function tvOn(){
-	stopAudio();
-	 var videoUrl = "rtmp://unoredcdn.net:1935/cadenadelmilagro";
-
-	  // Just play a video
-	  window.plugins.streamingMedia.playVideo(videoUrl);
-
-	  // Play a video with callbacks
-	  var options = {
-		successCallback: function() {
-		  console.log("Video was closed without error.");
-		},
-		errorCallback: function(errMsg) {
-		  console.log("Error! " + errMsg);
-		}
-	  };
-	  window.plugins.streamingMedia.playVideo(videoUrl, options);
+	//$("#tv #video-player").load("http://wibxi.com/apps/cdm_ios/videoplayer.html");
+	html5audio.stop();
+	console.log("audio paused");
+	//$('#cdmvideo').get(0).play();
 }
 function tvOff(){
-	//$('#rockahdvideo').get(0).pause();
-	playAudio();
+	//html5audio.play();
+	$('#cdmvideo').get(0).pause();
+	console.log("video paused");
 }
-document.addEventListener("backbutton", function(e){
-	if($.mobile.activePage.is('#home')){
-	 //window.location = "#exitDialog";
-		exitAppPopup();
-	}else{
-	   navigator.app.backHistory();
-	};
-});
-	function exitAppPopup() {
-		navigator.notification.confirm(
-		"¿Seguro que deseas salir?", 
-		function(buttonIndex){
-			ConfirmExit(buttonIndex);
-		}, 
-		"Cerrar aplicación", 
-		"Si,No"
-		); 
-	//return false;
-	};
-
-	function ConfirmExit(stat){
-	if(stat == "1"){
-		stopAudio();
-		navigator.app.exitApp();
-		
-		}else{
-			return;
-		};
-	};
+//html 5 audio
+playButton = document.getElementById('playbutton');
+stopButton = document.getElementById('stopbutton');
+activityIndicator = document.getElementById('activityindicator');
 </script>
 </body>
 </html>

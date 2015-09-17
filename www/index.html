@@ -31,7 +31,7 @@ var streamingUrl="http://unoredcdn.net/radiocdm/myStream.sdp/playlist.m3u8";
 		<h3>CDM TV</h3>
 	</div>	
 	<div data-role="content" >
-		<iframe id="cdmvideo" src="http://unoredcdn.com/iframe/plans.php?s=myStream.sdp&amp;c=cadenadelmilagro" width="100%" height="250" frameborder="0" scrolling="no" align="center" allowtransparency="true"></iframe>
+		<iframe id="cdmvideo" src="http://unoredcdn.com/iframe/plans-noauto.php?s=myStream.sdp&amp;c=cadenadelmilagro" width="100%" height="250" frameborder="0" scrolling="no" align="center" allowtransparency="true"></iframe>
 	</div>
 </div>
 <div data-role="page"  id="menu">
@@ -45,11 +45,11 @@ var streamingUrl="http://unoredcdn.net/radiocdm/myStream.sdp/playlist.m3u8";
 			<li><a href="#" class="call"><img src="images/call_2.png"/>Llamar</a></li>
 			<li><a href="#" class="contact"><img src="images/email.png"/>Email</a></li>
 			<li><a href="#schedule"><img src="images/schedule.png"/>Programación</a></li>
-			<li><a href="#" onclick="window.open('http://www.cdminternacional.com');"><img src="images/web.png"/>Sitio Web</a></li>
+			<li><a href="#" onclick="window.open('http://www.cdminternacional.com','_blank','location=no,closebuttoncaption=Atrás');"><img src="images/web.png"/>Sitio Web</a></li>
 			<li><a href="#donation"><img src="images/donation.png"/>Donar</a></li>
 			<li><a href="#notification"><img src="images/notification.png"/>Notificaciones</a></li>
-			<li><a href="#" onclick="window.open('https://www.facebook.com/cdminternacionaltv');"><img src="images/facebook.png"/>Facebook</a></li>
-			<li><a href="#" onclick= "window.open('https://www.youtube.com/user/cdminternacional');"><img src="images/youtube.png"/>YouTube</a></li>
+			<li><a href="#" onclick="window.open('https://www.facebook.com/cdminternacionaltv','_blank','location=no,closebuttoncaption=Atrás');"><img src="images/facebook.png"/>Facebook</a></li>
+			<li><a href="#" onclick= "window.open('https://www.youtube.com/user/cdminternacional','_blank','location=no,closebuttoncaption=Atrás');"><img src="images/youtube.png"/>YouTube</a></li>
 		</ul>
 	</div>
 	<div id="ads">
@@ -82,6 +82,83 @@ var streamingUrl="http://unoredcdn.net/radiocdm/myStream.sdp/playlist.m3u8";
 		</div>
 	</div>
 </div>
+<div data-role="page" id="donation">
+	<div data-role="header" data-position="fixed" data-tap-toggle="false" id="myheader" align="center">
+		<a class="back-btn" href="#menu" data-direction="reverse" data-role="none"><img src="images/back-btn.png"/></a>
+		<h3>Donaciones</h3>
+	</div>	
+	<div data-role="content" >
+		<img  src="images/logo_radio.jpg"/>
+		<h3>Ofrendas</h3>
+		<a href="#" onclick="window.open('https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=VBAZT7HXWX3NJ','_blank','location=no,closebuttoncaption=Atrás');"><img style="width:100%" src="http://cdminternacional.com/ofrendas/ofrenda.jpg" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!"/></a>
+		
+		<h3>Ofrenda mensual($10-$100)</h3>
+		<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_system">
+			<input type="hidden" name="cmd" value="_s-xclick">
+			<input type="hidden" name="hosted_button_id" value="LTSM8HSB2JSDQ">
+			<table>
+				<tbody>
+				<tr>
+					<td><input type="hidden" name="on0" value="Ofrenda Mensual- ($10 - $100)- Escoja y oprima el botón">Escoja y oprima el botón</td>
+					</tr>
+					<tr>
+						<td>
+							<select data-role="none"name="os0">
+								<option value="10 Dolares">10 Dolares : $10.00 USD - monthly</option>
+								<option value="20 Dolares">20 Dolares : $20.00 USD - monthly</option>
+								<option value="30 Dolares">30 Dolares : $30.00 USD - monthly</option>
+								<option value="40 Dolares">40 Dolares : $40.00 USD - monthly</option>
+								<option value="50 Dolares">50 Dolares : $50.00 USD - monthly</option>
+								<option value="60 Dolares">60 Dolares : $60.00 USD - monthly</option>
+								<option value="70 Dolares">70 Dolares : $70.00 USD - monthly</option>
+								<option value="80 Dolares">80 Dolares : $80.00 USD - monthly</option>
+								<option value="90 Dolares">90 Dolares : $90.00 USD - monthly</option>
+								<option value="100">100 : $100.00 USD - monthly</option>
+							</select>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			<input type="hidden" name="currency_code" value="USD">
+			<input type="image" style="width:100%" src="http://cdminternacional.com/ofrendas/mensual.jpg" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+			<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+		</form>
+		<h3>Ofrenda mensual($100-$1000)</h3>
+		<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_system">
+			<input type="hidden" name="cmd" value="_s-xclick">
+			<input type="hidden" name="hosted_button_id" value="5MA2ERZ58UMRC">
+			<table>
+				<tbody>
+					<tr>
+						<td><input type="hidden" name="on0" value="Ofrenda Mensual- ($100 - $1000)- Escoja y oprima el botón">Escoja y oprima el botón</td>
+					</tr>
+					<tr>
+						<td>
+							<select data-role="none" name="os0">
+								<option value="100 Dolares">100 Dolares : $100.00 USD - monthly</option>
+								<option value="200 Dolares">200 Dolares : $200.00 USD - monthly</option>
+								<option value="300 Dolares">300 Dolares : $300.00 USD - monthly</option>
+								<option value="400 Dolares">400 Dolares : $400.00 USD - monthly</option>
+								<option value="500 Dolares">500 Dolares : $500.00 USD - monthly</option>
+								<option value="600 Dolares">600 Dolares : $600.00 USD - monthly</option>
+								<option value="700 Dolares">700 Dolares : $700.00 USD - monthly</option>
+								<option value="800 Dolares">800 Dolares : $800.00 USD - monthly</option>
+								<option value="900 Dolares">900 Dolares : $900.00 USD - monthly</option>
+								<option value="1000">1000 : $1,000.00 USD - monthly</option>
+							</select>
+						</td>
+					</tr>
+			</tbody>
+			</table>
+			<input type="hidden" name="currency_code" value="USD">
+			<input type="image" style="width:100%" src="http://cdminternacional.com/ofrendas/mensual.jpg" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+			<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+		</form>
+	</div>
+</div>
+
+
+
 <script type="text/javascript" charset="utf-8">
 $('.call').on("click",function(){
 		window.location.href = "tel:7872625400";
@@ -90,6 +167,8 @@ $('.contact').on("click",function(){
 	window.location.href = "mailto:";
 });
 var gaPlugin;
+function successHandler(){}
+function errorHandler(){}
 document.addEventListener("deviceready", onDeviceReady, false);
 	function onDeviceReady() {
 		//html5audio.play();
@@ -102,8 +181,6 @@ document.addEventListener("deviceready", onDeviceReady, false);
 		gaPlugin = window.plugins.gaPlugin;
 		gaPlugin.init(successHandler, errorHandler, "UA-38947668-4", 10);
 	}
-		function successHandler(){}
-		function errorHandler(){}
 //notifications
 document.addEventListener('deviceready', function () {
 	var notificationOpenedCallback = function(jsonData) {

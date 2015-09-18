@@ -61,10 +61,10 @@ var streamingUrl="http://unoredcdn.net/radiocdm/myStream.sdp/playlist.m3u8";
 <div data-role="page" id="tv">
 	<div data-role="header" data-position="fixed" data-tap-toggle="false" id="myheader" align="center">
 		<a class="back-btn"  href="#home" data-direction="reverse" data-role="none"><img src="images/back-btn.png"/></a>
-		<h3>CDM TV</h3>
+		<img style="height:60px;margin-top:-8px" src="images/cdmtv.png"/>
 	</div>	
 	<div data-role="content" >
-		<iframe id="cdmvideo" src="http://unoredcdn.com/iframe/plans-noauto.php?s=myStream.sdp&c=cadenadelmilagro" width="100%" height="250" frameborder="0" scrolling="no" align="center"></iframe>
+		<iframe id="cdmvideo" src="http://wibxi.com/apps/cdm_ios/videoplayer.html"></iframe>
 	</div>
 	<div id="ads">
 		<div id="imgslide">
@@ -84,10 +84,10 @@ var streamingUrl="http://unoredcdn.net/radiocdm/myStream.sdp/playlist.m3u8";
 <div data-role="page" id="radio">
 	<div data-role="header" data-position="fixed" data-tap-toggle="false" id="myheader" align="center">
 		<a class="back-btn"  href="#home" data-direction="reverse" data-role="none"><img src="images/back-btn.png"/></a>
-		<h3>CDM Radio</h3>
+		<img style="height:60px;margin-top:-8px" src="images/cdmradio.png"/>
 	</div>	
 	<div data-role="content" class="content">
-		<img  src="images/cdm_radio.png"/>
+		<img id="radio-logo" src="images/cdm_radio.png"/>
 		<div data-role="navbar">
 			<ul>
 				<li><a id="playbutton" href="#" onClick="html5audio.play();return false;"><img src="images/play.png"/></a><a href="#" id="activityindicator" onClick="html5audio.stop();return false;"><img src="images/activityindicator.gif" /></a><a id="stopbutton" href="#" class="stopaudio" onClick="html5audio.stop();return false;"><img  src="images/stop.png"/></a></li>
@@ -189,7 +189,7 @@ $('.call').on("click",function(){
 		window.location.href = "tel:7872625400";
 	});
 $('.contact').on("click",function(){
-	window.location.href = "mailto:";
+	window.location.href = "mailto:cartas@cdminternacional.com";
 });
 document.addEventListener("deviceready", onDeviceReady, false);
 	function onDeviceReady() {

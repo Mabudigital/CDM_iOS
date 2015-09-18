@@ -64,7 +64,7 @@ var streamingUrl="http://unoredcdn.net/radiocdm/myStream.sdp/playlist.m3u8";
 		<img style="height:60px;margin-top:-8px" src="images/cdmtv.png"/>
 	</div>	
 	<div data-role="content" >
-		<iframe id="cdmvideo" src="http://wibxi.com/apps/cdm_ios/videoplayer.html"></iframe>
+		<div id="videoplayer"></div>
 	</div>
 	<div id="ads">
 		<div id="imgslide">
@@ -216,15 +216,14 @@ document.addEventListener('deviceready', function () {
 },false); 
 
 function tvOn(){
-	//$("#tv #video-player").load("http://wibxi.com/apps/cdm_ios/videoplayer.html");
+	$("#tv #videoplayer").load("http://wibxi.com/apps/cdm_ios/videoplayer.html");
 	html5audio.stop();
 	console.log("audio paused");
-	//$('#cdmvideo').get(0).play();
+	$('#cdmvideo').get(0).play();
 }
 function tvOff(){
 	//html5audio.play();
 	$('#cdmvideo').get(0).pause();
-	console.log("video paused");
 }
 //html 5 audio
 playButton = document.getElementById('playbutton');
